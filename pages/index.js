@@ -1,65 +1,65 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Header from "../components/Header";
+import Layout from "../components/Layout";
+import HomePage from "../components/HomePage";
+import PageLayout from "../components/PageLayout";
+import styled from "styled-components";
+import HomeLayout from "../components/HomeLayout";
+import LeftLayout from "../components/LeftLayout";
+import RightLayout from "../components/RightLayout";
+import TitleComponent from "../components/TitleComponent";
+
+const HomeTitle = styled(TitleComponent)`
+  z-index: 100;
+  h1 {
+    flex-direction: column;
+    margin: auto;
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 22px;
+    }
+    span {
+      font-size: 22px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    h1 {
+      width: 100%;
+    }
+  }
+  @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    
+    padding-left: 20px;
+    h1{
+      align-items: flex-start;
+      font-size: 2.3rem;
+      width: 100%;
+    }
+    span {
+      font-size: 28px;
+    }
+  }
+`;
+const HomeRight = styled(RightLayout)`
+  background-image: url("pic4.jpg");
+`;
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+    <Layout>
+      <HomeLayout>
+        <HomeTitle>
+          Hello, I'm Arun Samuel, a{" "}
+          <span>Systems Enginner / Web Developer !</span>{" "}
+        </HomeTitle>
+        <HomeRight></HomeRight>
+      </HomeLayout>
+    </Layout>
+  );
 }
+
+Home.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};
